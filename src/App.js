@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Form from "./components/Form/Form";
+import PackingList from "./components/PackingList/PackingList";
+import Stats from "./components/Stats/Stats";
+import Logo from "./components/logo/Logo";
 
+const itemsArray = [
+  {
+    quantity:"4",
+    name:"Socks",
+    packed:false
+  },
+  {
+    quantity:"5",
+    name:"Shoes",
+    packed:false
+  },
+  {
+    quantity:"7",
+    name:"Shirts",
+    packed:false
+  },
+  {
+    quantity:"4",
+    name:"Jeans",
+    packed:false
+  },
+  {
+    quantity:"2",
+    name:"t-shirts",
+    packed:false
+  },
+]
 function App() {
+  const[itemsArr,setItemsArr] = useState(itemsArray)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Logo/>
+      <Form items={itemsArr} setItems={setItemsArr} />
+      <PackingList items={itemsArr} setItems={setItemsArr}  />
+      <Stats/>
+    </>
   );
 }
 
