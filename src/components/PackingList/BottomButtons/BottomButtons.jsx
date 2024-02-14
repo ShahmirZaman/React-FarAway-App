@@ -6,15 +6,21 @@ export default function BottomButtons({items,setItems}) {
   const[sortOrder,setSortOrder] = useState("inputOrder")
   
   const sortHandler = (e) => {
-    const newSortOrder = e.target.value;
-    setSortOrder(newSortOrder)
-
-    const newItemsArray = [...items].sort((a,b) => {
-      if(a[newSortOrder] < b[newSortOrder]) return -1
-      if(a[newSortOrder] > b[newSortOrder]) return 1
-      return 0
+    let sortValue = e.target.value
+    let nowItems = [...items]
+    console.log(nowItems);
+    // //Sort by Input
+    const inputSorted = [...nowItems].sort((a,b)=>{return a.quantity - b.quantity});
+    console.log(inputSorted)
+    //Sort by description
+    const descSort = [...nowItems].sort((a,b) => {
+      return a.name.localeCompare(b.name);
     })
-    setItems(newItemsArray)
+    //Sort by Packed Status
+    const packedSort = [...nowItems].sort((a,b) => {
+      return a.packed === b.packed ? 0 : (a.packed ? -1 : 1);
+    })
+    (sortValue == "inputOrder") ? setItems(inputSorted) : (sortValue == "description") ? setItems(descSort) : (sortValue == "packedStatus") ? setItems(packedSort) : console.log(true)
   }
 
   const clearListHandler = () => {
