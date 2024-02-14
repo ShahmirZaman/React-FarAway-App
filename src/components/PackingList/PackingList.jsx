@@ -6,7 +6,7 @@ export default function PackingList({items,setItems}) {
   return (
     <div className="bg-[#4c3423] w-full h-[500px] flex flex-col justify-between p-6 text-xl">
       <ItemList items={items} setItems={setItems}/>
-      <BottomButtons/>
+      <BottomButtons items={items} setItems={setItems}/>
     </div>
   );
 }
