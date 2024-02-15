@@ -1,13 +1,18 @@
 import React from 'react'
 
-export default function Item({items,item,setItems,indexNumber}) {
+export default function Item({items,item,setItems,indexNumber,count,setCount}) {
   const packedItemHandler = (packingValue,itemNumber) => {
       const myItems = [...items]
       myItems[indexNumber].packed = !packingValue
       setItems(myItems)
+      setCount(count + 1)
   }
-  const deleteItemHandler = () =>{
-    console.log("chala kia??")
+  const deleteItemHandler = (indexNumber,item) =>{
+    console.log(indexNumber,item)
+    const myItems = [...items]
+    myItems.splice(indexNumber,1);
+    setItems(myItems);
+    setCount(count - 1)
   }
   return (
     <div className='flex gap-x-2 text-black bg-[#fde7aa] p-2 rounded-full'>
@@ -20,7 +25,7 @@ export default function Item({items,item,setItems,indexNumber}) {
       }}>
       {`${item.quantity} ${item.name}`}
       </p>
-      <button className='text-red font-semibold' onClick={deleteItemHandler}>X</button>
+      <button className='text-red font-semibold' onClick={() => deleteItemHandler(indexNumber,item)}>X</button>
     </div>
   )
 }

@@ -18,7 +18,7 @@ export default function Form({items,setItems}) {
 
   return (
     <div className=' bg-[#df6b1b] flex justify-center items-center h-[40px] gap-2 text-xl'>
-      <p>What do you need for your trip?</p>
+      <p>What do you need for your 😍 trip?</p>
       <input 
       type='number' 
       placeholder='1' 

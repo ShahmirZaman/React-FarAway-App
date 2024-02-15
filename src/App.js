@@ -4,41 +4,16 @@ import PackingList from "./components/PackingList/PackingList";
 import Stats from "./components/Stats/Stats";
 import Logo from "./components/logo/Logo";
 
-const itemsArray = [
-  {
-    quantity:"4",
-    name:"Socks",
-    packed:false
-  },
-  {
-    quantity:"5",
-    name:"Shoes",
-    packed:false
-  },
-  {
-    quantity:"7",
-    name:"Shirts",
-    packed:false
-  },
-  {
-    quantity:"4",
-    name:"Jeans",
-    packed:false
-  },
-  {
-    quantity:"2",
-    name:"t-shirts",
-    packed:false
-  },
-]
+const itemsArray = []
 function App() {
   const[itemsArr,setItemsArr] = useState(itemsArray)
+  const[count,setCount] = useState(0)
   return (
     <>
       <Logo/>
       <Form items={itemsArr} setItems={setItemsArr} />
-      <PackingList items={itemsArr} setItems={setItemsArr}  />
-      <Stats/>
+      <PackingList items={itemsArr} setItems={setItemsArr} count={count} setCount={setCount} />
+      <Stats items={itemsArr} setItems={setItemsArr} count={count}/>
     </>
   );
 }
